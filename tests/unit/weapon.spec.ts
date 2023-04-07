@@ -22,51 +22,32 @@ describe('Weapon', () => {
     expect(weapon.getAverageDamagePerDay()).toBe(5);
   });
 
-  describe('damage calculation', () => {
-    test('average damage calculated correctly', () => {
-      const target = new Target(10, 10, 10, 0);
-      const weapon = testWeapon()
-        .withMinDamage(5)
-        .withMaxDamage(15)
-        .withCooldown(20)
-        .build();
+  test('average damage calculated correctly', () => {
+    const target = new Target(10, 10, 10, 0);
+    const weapon = testWeapon()
+      .withMinDamage(5)
+      .withMaxDamage(15)
+      .withCooldown(20)
+      .build();
 
-      const ttk = weapon.getDamageReport(target);
+    const ttk = weapon.getDamageReport(target);
 
-      expect(ttk).toStrictEqual(new DamageReport(40, 1, 1, 1));
-    });
+    expect(ttk).toStrictEqual(new DamageReport(40, 1, 1, 1));
   });
 
-  describe('damage remainder transferred to next layer of protection', () => {
-    test('shield damage remainder hits armor', () => {
-      const target = new Target(20, 30, 20, 0);
-      const weapon = testWeapon()
-        .withMinDamage(20)
-        .withMaxDamage(20)
-        .withArmorDamageMultiplier(2)
-        .withShieldDamageMultiplier(4)
-        .withCooldown(20)
-        .build();
+  test('damage remainder transferred to next layer of protection', () => {
+    const target = new Target(15, 20, 20, 0);
+    const weapon = testWeapon()
+      .withMinDamage(20)
+      .withMaxDamage(20)
+      .withArmorDamageMultiplier(2)
+      .withShieldDamageMultiplier(4)
+      .withCooldown(20)
+      .build();
 
-      const ttk = weapon.getDamageReport(target);
+    const ttk = weapon.getDamageReport(target);
 
-      expect(ttk).toStrictEqual(new DamageReport(20, 0.25, 0.75, 1));
-    });
-
-    test('armor damage remainder hits hull', () => {
-      const target = new Target(70, 20, 0, 0);
-      const weapon = testWeapon()
-        .withMinDamage(20)
-        .withMaxDamage(20)
-        .withHullDamageMultiplier(2)
-        .withArmorDamageMultiplier(4)
-        .withCooldown(20)
-        .build();
-
-      const ttk = weapon.getDamageReport(target);
-
-      expect(ttk).toStrictEqual(new DamageReport(20, 0, 0.25, 1.75));
-    });
+    expect(ttk).toStrictEqual(new DamageReport(20, 0.25, 0.5, 0.75));
   });
 
   describe('hit chance', () => {

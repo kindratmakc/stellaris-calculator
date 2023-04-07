@@ -30,63 +30,48 @@ export class Weapon {
   }
 
   public getDamageReport(target: Target, trackingBonus= 0, accuracyBonus = 0): DamageReport {
-    const shieldsDepletion = this.depleteShields(target);
-    const armorDepletion = this.depleteArmor(target, shieldsDepletion);
-    const shotsToDepleteHull = this.depleteHull(target, armorDepletion);
+    const shotsToDepleteShields = this.depleteShields(target);
+    const shotsToDepleteArmor = this.depleteArmor(target);
+    const shotsToDepleteHull = this.depleteHull(target);
 
-    const totalShots = shieldsDepletion.shotsToDepleteLayer + armorDepletion.shotsToDepleteLayer + shotsToDepleteHull;
+    const totalShots = shotsToDepleteShields + shotsToDepleteArmor + shotsToDepleteHull;
 
     const hitChance = this.getHitChance(target, trackingBonus, accuracyBonus);
     const timeToKillTicks = Math.ceil(totalShots) * this.cooldownTicks / hitChance - this.cooldownTicks;
 
     return new DamageReport(
       timeToKillTicks,
-      shieldsDepletion.shotsToDepleteLayer,
-      armorDepletion.shotsToDepleteLayer,
+      shotsToDepleteShields,
+      shotsToDepleteArmor,
       shotsToDepleteHull,
     );
   }
 
-  private depleteShields(target: Target): LayerDepletion {
+  private depleteShields(target: Target): number {
     if (this.shieldPenetration == 1) {
-      return new LayerDepletion(0, 0);
+      return 0;
     }
 
-    const shotsToDepleteShields = this.shotsToDepleteLayer(target.shields, 0, this.shieldDamage);
-    const shotRemainder = this.getFractionOfShotTransferredToNextLayer(shotsToDepleteShields);
-
-    return new LayerDepletion(shotsToDepleteShields, shotRemainder);
+    return this.shotsToDepleteLayer(target.shields, this.shieldDamage);
   }
 
-  private depleteArmor(target: Target, shieldDepletion: LayerDepletion): LayerDepletion {
+  private depleteArmor(target: Target): number {
     if (this.armorPenetration == 1) {
-      return new LayerDepletion(0, 0);
+      return 0;
     }
 
-    const shotsToDepleteArmor = this.shotsToDepleteLayer(target.armor, shieldDepletion.shotRemainder, this.armorDamage);
-    const shotRemainder = this.getFractionOfShotTransferredToNextLayer(shotsToDepleteArmor);
-
-    return new LayerDepletion(shotsToDepleteArmor + shieldDepletion.shotRemainder, shotRemainder);
+    return this.shotsToDepleteLayer(target.armor, this.armorDamage);
   }
 
-  private depleteHull(target: Target, armorDepletion: LayerDepletion): number {
-    return this.shotsToDepleteLayer(target.hull, armorDepletion.shotRemainder, this.hullDamage) + armorDepletion.shotRemainder;
+  private depleteHull(target: Target): number {
+    return this.shotsToDepleteLayer(target.hull, this.hullDamage);
   }
 
-  private getFractionOfShotTransferredToNextLayer(shotsToDepleteLayer: number) {
-    const fractionOfLastShotThatHitsCurrentLayer = shotsToDepleteLayer % 1;
-
-    return false
-      ? 1 - fractionOfLastShotThatHitsCurrentLayer
-      : 0;
-  }
-
-  private shotsToDepleteLayer(layerHitPoints: number, previousLayerShotRemainder: number, damageMultiplier: number): number {
+  private shotsToDepleteLayer(layerHitPoints: number, damageMultiplier: number): number {
     const damagePerHit = this.getAverageDamagePerHit();
-    const hitPointsRemainingAfterPreviousLayerRemainderApplied = layerHitPoints - (damagePerHit * previousLayerShotRemainder) * damageMultiplier;
     const damageToLayerPerHit = damagePerHit * damageMultiplier;
 
-    return hitPointsRemainingAfterPreviousLayerRemainderApplied / damageToLayerPerHit;
+    return layerHitPoints / damageToLayerPerHit;
   }
 
   private getHitChance(target: Target, trackingBonus: number, accuracyBonus: number) {
@@ -111,7 +96,6 @@ export class DamageReport {
 class LayerDepletion {
   constructor(
     public readonly shotsToDepleteLayer: number,
-    public readonly shotRemainder: number,
   ) {
   }
 }
