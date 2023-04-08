@@ -29,7 +29,7 @@ export class Weapon {
     return this.getAverageDamagePerHit() / (this.cooldownTicks / TICKS_PER_DAY);
   }
 
-  public getDamageReport(target: Target, trackingBonus= 0, accuracyBonus = 0): DamageReport {
+  public getDamageReport(target: Target, trackingBonus = 0, accuracyBonus = 0): DamageReport {
     const shotsToDepleteShields = this.depleteShields(target);
     const shotsToDepleteArmor = this.depleteArmor(target);
     const shotsToDepleteHull = this.depleteHull(target);

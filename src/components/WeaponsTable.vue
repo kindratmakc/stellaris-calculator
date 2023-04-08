@@ -5,16 +5,10 @@
       <th class="col-2">Weapon</th>
       <th>Size</th>
       <th>Damage</th>
-      <th>DPS</th>
       <th>Cooldown</th>
-      <th>Accuracy</th>
       <th>Tracking</th>
-      <th>Hull DMG</th>
-      <th>Armor DMG</th>
-      <th>Shield DMG</th>
-      <th>Armor Pen</th>
-      <th>Shield Pen</th>
       <th>Time to Kill</th>
+      <th>Size Adjusted TTK</th>
     </tr>
     </thead>
     <WeaponTechGroup

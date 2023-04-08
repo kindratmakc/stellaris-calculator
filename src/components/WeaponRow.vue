@@ -2,21 +2,15 @@
   <tr>
     <td>{{ size }}</td>
     <td>{{ weapon.getAverageDamagePerHit() }}</td>
-    <td>{{ parseFloat(weapon.getAverageDamagePerDay().toFixed(2)) }}</td>
-    <td>{{ weapon.cooldownTicks / 10 }}</td>
-    <td>{{ weapon.accuracy }}%</td>
+    <td>{{ weapon.cooldownTicks / 10 }}d</td>
     <td>{{ weapon.tracking }}%</td>
-    <td>{{ weapon.hullDamage * 100 }}%</td>
-    <td>{{ weapon.armorDamage * 100 }}%</td>
-    <td>{{ weapon.shieldDamage * 100 }}%</td>
-    <td>{{ weapon.armorPenetration * 100}}%</td>
-    <td>{{ weapon.shieldPenetration * 100 }}%</td>
-    <td>{{ timeToKill }}</td>
+    <td>{{ timeToKillWithBonusesDays }}<sup class="text-success">{{ timeToKillWithBonusesDiffDays }}</sup></td>
+    <td>{{ sizeAdjustedTimeToKillDays }}d</td>
   </tr>
 </template>
 
-<script>
-import {Weapon, TICKS_PER_DAY} from '@/domain/weapon';
+<script lang="ts">
+import {Weapon, TICKS_PER_DAY, Size} from '@/domain/weapon';
 import useStore from '@/store';
 
 export default {
@@ -27,13 +21,17 @@ export default {
     };
   },
   props: {
-    weapon: Weapon,
+    weapon: {
+      type: Weapon,
+      required: true
+    },
   },
   computed: {
-    timeToKill() {
-      let ttk = this.weapon
-        .getDamageReport(this.store.target, this.store.attacker.trackingBonus, this.store.attacker.accuracyBonus)
-        .timeToKillTicks;
+    timeToKill(): number {
+      return this.weapon.getDamageReport(this.store.target).timeToKillTicks;
+    },
+    timeToKillWithBonusesDays(): string {
+      let ttk = this.timeToKillWithBonuses;
 
       if (ttk === Infinity) {
         return '∞';
@@ -41,7 +39,51 @@ export default {
 
       return `${Math.floor(ttk) / TICKS_PER_DAY}d`;
     },
-    size() {
+    sizeAdjustedTimeToKillDays(): string {
+      let ttk = this.timeToKillWithBonuses;
+
+      if (ttk === Infinity) {
+        return '∞';
+      }
+
+      return `${Math.floor(ttk * this.weaponSizeMultiplier) / TICKS_PER_DAY}d`;
+    },
+    weaponSizeMultiplier(): number {
+      switch (this.weapon.size) {
+        case Size.Small:
+          return 1;
+        case Size.Medium:
+          return 2;
+        case Size.Large:
+          return 4;
+        case Size.ExtraLarge:
+          return 8;
+        default:
+          return 1;
+      }
+    },
+    timeToKillWithBonusesDiffDays(): string {
+      let ttk = this.timeToKillWithBonusesDiff;
+
+      if (ttk === Infinity || ttk === -Infinity || ttk === 0) {
+        return '';
+      }
+
+      return `${Math.floor(ttk) / TICKS_PER_DAY}d`;
+    },
+    timeToKillWithBonusesDiff(): number {
+      const ttkWithBonuses = this.timeToKillWithBonuses;
+
+      if (ttkWithBonuses === Infinity) {
+        return Infinity;
+      }
+
+      return ttkWithBonuses - this.timeToKill;
+    },
+    timeToKillWithBonuses(): number {
+      return this.weapon.getDamageReport(this.store.target, this.store.attacker.trackingBonus, this.store.attacker.accuracyBonus).timeToKillTicks;
+    },
+    size(): string {
       return this.weapon.size.toString();
     },
   },
