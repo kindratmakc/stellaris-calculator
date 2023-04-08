@@ -9,7 +9,7 @@
   </tr>
 </template>
 
-<script lang="ts">
+<script>
 import {Weapon, TICKS_PER_DAY, Size} from '@/domain/weapon';
 import useStore from '@/store';
 
@@ -27,10 +27,10 @@ export default {
     },
   },
   computed: {
-    timeToKill(): number {
+    timeToKill() {
       return this.weapon.getDamageReport(this.store.target).timeToKillTicks;
     },
-    timeToKillWithBonusesDays(): string {
+    timeToKillWithBonusesDays() {
       let ttk = this.timeToKillWithBonuses;
 
       if (ttk === Infinity) {
@@ -39,7 +39,7 @@ export default {
 
       return `${Math.floor(ttk) / TICKS_PER_DAY}d`;
     },
-    sizeAdjustedTimeToKillDays(): string {
+    sizeAdjustedTimeToKillDays() {
       let ttk = this.timeToKillWithBonuses;
 
       if (ttk === Infinity) {
@@ -48,7 +48,7 @@ export default {
 
       return `${Math.floor(ttk * this.weaponSizeMultiplier) / TICKS_PER_DAY}d`;
     },
-    weaponSizeMultiplier(): number {
+    weaponSizeMultiplier() {
       switch (this.weapon.size) {
         case Size.Small:
           return 1;
@@ -62,7 +62,7 @@ export default {
           return 1;
       }
     },
-    timeToKillWithBonusesDiffDays(): string {
+    timeToKillWithBonusesDiffDays() {
       let ttk = this.timeToKillWithBonusesDiff;
 
       if (ttk === Infinity || ttk === -Infinity || ttk === 0) {
@@ -71,7 +71,7 @@ export default {
 
       return `${Math.floor(ttk) / TICKS_PER_DAY}d`;
     },
-    timeToKillWithBonusesDiff(): number {
+    timeToKillWithBonusesDiff() {
       const ttkWithBonuses = this.timeToKillWithBonuses;
 
       if (ttkWithBonuses === Infinity) {
@@ -80,10 +80,10 @@ export default {
 
       return ttkWithBonuses - this.timeToKill;
     },
-    timeToKillWithBonuses(): number {
+    timeToKillWithBonuses() {
       return this.weapon.getDamageReport(this.store.target, this.store.attacker.trackingBonus, this.store.attacker.accuracyBonus).timeToKillTicks;
     },
-    size(): string {
+    size() {
       return this.weapon.size.toString();
     },
   },
