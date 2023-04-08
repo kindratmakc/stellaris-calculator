@@ -93,13 +93,6 @@ export class DamageReport {
   }
 }
 
-class LayerDepletion {
-  constructor(
-    public readonly shotsToDepleteLayer: number,
-  ) {
-  }
-}
-
 export enum Size {
   Small = 'S',
   Medium = 'M',
@@ -113,9 +106,11 @@ export enum Size {
 export enum Tech {
   Amoeba = 'Amoeba',
   AncientCavitationCollapser = 'Ancient Cavitation Collapser',
+  AncientDefensiveWebSlinger = 'Ancient Defensive Web Slinger',
   AncientDrillerDrones = 'Ancient Driller Drones',
   AncientMacroBatteries = 'Ancient Macro Batteries',
   AncientNanoMissileCloudLauncher = 'Ancient Nano-Missile Cloud Launcher',
+  AncientRuinationGlare = 'Ancient Ruination Glare',
   AncientSaturatorArtillery = 'Ancient Saturator Artillery',
   ArcEmitter = 'Arc Emitter',
   Autocannon = 'Autocannon',

@@ -2,7 +2,7 @@
   <table class="table table-hover align-middle">
     <thead class="table-light sticky-top">
     <tr>
-      <th>Weapon</th>
+      <th class="col-2">Weapon</th>
       <th>Size</th>
       <th>Damage</th>
       <th>DPS</th>

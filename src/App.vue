@@ -9,8 +9,10 @@
     </div>
     <div class="row">
       <div class="col-2">
-        <TargetForm/>
-        <AttackerForm/>
+        <div class="sticky-top">
+          <TargetForm/>
+          <AttackerForm/>
+        </div>
       </div>
       <div class="col">
         <WeaponsTable/>

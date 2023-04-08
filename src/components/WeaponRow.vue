@@ -9,8 +9,8 @@
     <td>{{ weapon.hullDamage * 100 }}%</td>
     <td>{{ weapon.armorDamage * 100 }}%</td>
     <td>{{ weapon.shieldDamage * 100 }}%</td>
-    <td>{{ weapon.armorPenetration }}</td>
-    <td>{{ weapon.shieldPenetration }}</td>
+    <td>{{ weapon.armorPenetration * 100}}%</td>
+    <td>{{ weapon.shieldPenetration * 100 }}%</td>
     <td>{{ timeToKill }}</td>
   </tr>
 </template>

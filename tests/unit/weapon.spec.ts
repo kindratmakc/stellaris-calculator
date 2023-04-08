@@ -110,7 +110,7 @@ describe('Weapon', () => {
     });
   });
 
-  describe('shield penetration', () => {
+  describe('penetration', () => {
     test('full shield penetration', () => {
       const target = new Target(10, 10, 20, 0);
       const testWeapon = new TestWeaponBuilder()
@@ -137,6 +137,21 @@ describe('Weapon', () => {
       expect(damageReport).toStrictEqual(new DamageReport(10, 0, 0, 2));
     });
 
+    test('full shield and armor penetration', () => {
+      const target = new Target(10, 10, 20, 0);
+      const testWeapon = new TestWeaponBuilder()
+        .withMinDamage(5)
+        .withMaxDamage(5)
+        .withShieldPenetration(1.0)
+        .withArmorPenetration(1.0)
+        .withCooldown(10)
+        .build();
+
+      const damageReport = testWeapon.getDamageReport(target);
+
+      expect(damageReport).toStrictEqual(new DamageReport(10, 0, 0, 2));
+    });
+
     // test('partial shield penetration, kill before shields depleted', () => {
     //   const target = new Target(15, 15, 40, 0);
     //   const testWeapon = new TestWeaponBuilder()
@@ -145,10 +160,10 @@ describe('Weapon', () => {
     //     .withShieldPenetration(0.75)
     //     .withCooldown(10)
     //     .build();
-    //
-    //   const ttk = testWeapon.timeToKillTicks(target);
-    //
-    //   expect(ttk.timeToKillTicks).toBe(30);
+
+    //   const damageReport = testWeapon.getDamageReport(target);
+
+    //   expect(damageReport).toStrictEqual(new DamageReport(30, 16, 2, 2));
     // });
     //
     // test('partial shield penetration, kill after shields depleted', () => {

@@ -44,12 +44,12 @@ export const weapons = [
   new Weapon('Plasma Cannon', Tech.PlasmaLauncher, Tier.III, Size.Medium, 53.00, 140.00, 0.25, 2.00, 1.50, 0.00, 0.00, 80, 20, 57),
   new Weapon('Plasma Cannon', Tech.PlasmaLauncher, Tier.III, Size.Large, 126.00, 336.00, 0.25, 2.00, 1.50, 0.00, 0.00, 80, 5, 64),
   // Disruptors
-  // new Weapon('Disruptor', Tech.Disruptor, Tier.I, Size.Small, 1.00, 11.20, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 60, 23),
-  // new Weapon('Disruptor', Tech.Disruptor, Tier.I, Size.Medium, 1.00, 28.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 35, 34),
-  // new Weapon('Ion Disruptor', Tech.Disruptor, Tier.II, Size.Small, 1.00, 14.70, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 60, 23),
-  // new Weapon('Ion Disruptor', Tech.Disruptor, Tier.II, Size.Medium, 1.00, 37.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 35, 34),
-  // new Weapon('Phased Disruptor', Tech.Disruptor, Tier.III, Size.Small, 1.00, 19.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 60, 23),
-  // new Weapon('Phased Disruptor', Tech.Disruptor, Tier.III, Size.Medium, 1.00, 48.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 35, 34),
+  new Weapon('Disruptor', Tech.Disruptor, Tier.I, Size.Small, 1.00, 11.20, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 60, 23),
+  new Weapon('Disruptor', Tech.Disruptor, Tier.I, Size.Medium, 1.00, 28.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 35, 34),
+  new Weapon('Ion Disruptor', Tech.Disruptor, Tier.II, Size.Small, 1.00, 14.70, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 60, 23),
+  new Weapon('Ion Disruptor', Tech.Disruptor, Tier.II, Size.Medium, 1.00, 37.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 35, 34),
+  new Weapon('Phased Disruptor', Tech.Disruptor, Tier.III, Size.Small, 1.00, 19.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 60, 23),
+  new Weapon('Phased Disruptor', Tech.Disruptor, Tier.III, Size.Medium, 1.00, 48.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 35, 34),
   // Autocannons
   new Weapon('Autocannon', Tech.Autocannon, Tier.I, Size.Small, 8.00, 16.00, 1.50, 0.25, 1.25, 0.00, 0.00, 85, 75, 8.5),
   new Weapon('Autocannon', Tech.Autocannon, Tier.I, Size.Medium, 20.00, 40.00, 1.50, 0.25, 1.25, 0.00, 0.00, 85, 50, 13),
@@ -76,11 +76,11 @@ export const weapons = [
   new Weapon('Particle Lance', Tech.Lance, Tier.I, Size.ExtraLarge, 600.00, 1500.00, 0.50, 2.00, 1.50, 0.00, 0.00, 85, 0, 99.5),
   new Weapon('Tachyon Lance', Tech.Lance, Tier.II, Size.ExtraLarge, 780.00, 1950.00, 0.50, 2.00, 1.50, 0.00, 0.00, 85, 0, 99.5),
   // Arc Emitter
-  // new Weapon('Arc Emitter', Tech.ArcEmitter, Tier.I, Size.ExtraLarge, 1.00, 1300.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 0, 101),
-  // new Weapon('Focused Arc Emitter', Tech.ArcEmitter, Tier.II, Size.ExtraLarge, 2.00, 1690.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 0, 101),
+  new Weapon('Arc Emitter', Tech.ArcEmitter, Tier.I, Size.ExtraLarge, 1.00, 1300.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 0, 101),
+  new Weapon('Focused Arc Emitter', Tech.ArcEmitter, Tier.II, Size.ExtraLarge, 2.00, 1690.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 0, 101),
   // Titan Laser
   new Weapon('Perdition Beam', Tech.PerditionBeam, Tier.I, Size.Titan, 5000.00, 10000.00, 0.75, 1.50, 1.25, 0.00, 0.00, 85, 0, 255),
-  // new Weapon('Ancient Ruination Glare', Size.Titan, 5000.00, 10000.00, 0.50, 1.75, 1.25, 0.00, 0.00, 85, 0, 145),
+  new Weapon('Ancient Ruination Glare', Tech.AncientRuinationGlare, Tier.I, Size.Titan, 5000.00, 10000.00, 0.50, 1.75, 1.25, 0.00, 0.00, 85, 0, 145),
   // Flak Battery
   // new Weapon('Flak Battery', Tech.FlakGun, Tier.I, Size.PointDefense, 2.00, 4.00, 2.00, 0.25, 1.00, 0.25, 0.00, 75, 50, 5),
   // new Weapon('Flak Cannons', Tech.FlakGun, Tier.II, Size.PointDefense, 3.00, 6.00, 2.00, 0.25, 1.00, 0.25, 0.00, 75, 60, 5),
@@ -90,7 +90,7 @@ export const weapons = [
   // new Weapon('Sentinel Point-Defense', Tech.PointDefense, Tier.I, Size.PointDefense, 2.00, 4.00, 0.25, 2.00, 1.00, 0.00, 0.25, 75, 10, 5),
   // new Weapon('Barrier Point-Defense', Tech.PointDefense, Tier.II, Size.PointDefense, 3.00, 6.00, 0.25, 2.00, 1.00, 0.00, 0.25, 75, 20, 5),
   // new Weapon('Guardian Point-Defense', Tech.PointDefense, Tier.III, Size.PointDefense, 4.00, 8.00, 0.25, 2.00, 1.00, 0.00, 0.25, 75, 30, 5),
-  // new Weapon('Ancient Defensive Web Slinger', Size.PointDefense, 5.00, 10.00, 0.25, 2.00, 1.00, 0.00, 0.25, 75, 30, 5),
+  // new Weapon('Ancient Defensive Web Slinger', Tech.AncientDefensiveWebSlinger, Tier.I, Size.PointDefense, 5.00, 10.00, 0.25, 2.00, 1.00, 0.00, 0.25, 75, 30, 5),
   // Missiles
   new Weapon('Nuclear Missiles', Tech.Missiles, Tier.I, Size.Small, 16.00, 24.00, 1.00, 1.00, 1.00, 1.00, 0.00, 100, 25, 85),
   new Weapon('Fusion Missiles', Tech.Missiles, Tier.II, Size.Small, 21.00, 32.00, 1.00, 1.00, 1.00, 1.00, 0.00, 100, 25, 85),
@@ -105,19 +105,19 @@ export const weapons = [
   new Weapon('Swarmer Missiles', Tech.SwarmerMissiles, Tier.I, Size.Medium, 36.00, 50.00, 1.00, 1.00, 1.00, 1.00, 0.00, 100, 30, 42.5),
   new Weapon('Whirlwind Missiles', Tech.SwarmerMissiles, Tier.II, Size.Medium, 61.00, 85.00, 1.00, 1.00, 1.00, 1.00, 0.00, 100, 30, 42.5),
   // Researchable Space Critters
-  // new Weapon('Cloud Lightning', Tech.CloudLightning, Tier.I, Size.Large, 1.00, 106.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 30, 71.5),
+  new Weapon('Cloud Lightning', Tech.CloudLightning, Tier.I, Size.Large, 1.00, 106.00, 1.00, 1.00, 1.00, 1.00, 1.00, 100, 30, 71.5),
   new Weapon('Cutting Laser', Tech.MiningLaser, Tier.I, Size.Small, 8.00, 21.00, 0.50, 1.50, 1.50, 0.00, 0.00, 75, 40, 23),
   new Weapon('Cutting Laser', Tech.MiningLaser, Tier.I, Size.Medium, 20.00, 53.00, 0.50, 1.50, 1.50, 0.00, 0.00, 70, 20, 34),
   new Weapon('Energy Siphon', Tech.EnergySiphon, Tier.I, Size.Small, 8.00, 21.00, 2.00, 0.25, 1.00, 0.00, 0.00, 75, 50, 42.5),
   // archaeoweapons
-  // new Weapon('Ancient Cavitation Collapser', Size.Small, 11.50, 31.00, 0.50, 1.50, 1.00, 0.00, 0.50, 90, 50, 42.5),
-  // new Weapon('Ancient Cavitation Collapser', Size.Medium, 28.75, 75.00, 0.50, 1.50, 1.00, 0.00, 0.50, 90, 30, 50),
-  // new Weapon('Ancient Cavitation Collapser', Size.Large, 69.00, 186.00, 0.50, 1.50, 1.00, 0.00, 0.50, 90, 5, 57),
-  // new Weapon('Ancient Macro Batteries', Size.Small, 12.00, 31.00, 1.50, 0.50, 1.00, 0.00, 0.00, 50, 50, 29),
-  // new Weapon('Ancient Macro Batteries', Size.Medium, 26.50, 78.00, 1.50, 0.50, 1.00, 0.00, 0.00, 50, 30, 36),
-  // new Weapon('Ancient Macro Batteries', Size.Large, 62.00, 186.00, 1.50, 0.50, 1.00, 0.00, 0.00, 50, 5, 42.5),
-  // new Weapon('Ancient Nano-Missile Cloud Launcher', Size.Small, 3.00, 5.00, 1.00, 1.00, 1.25, 1.00, 1.00, 100, 25, 8.5),
-  // new Weapon('Ancient Saturator Artillery', Size.ExtraLarge, 920.00, 2600.00, 2.50, 0.25, 1.25, 0.00, 0.00, 75, 0, 114),
+  // new Weapon('Ancient Cavitation Collapser', Tech.AncientCavitationCollapser, Tier.I, Size.Small, 11.50, 31.00, 0.50, 1.50, 1.00, 0.00, 0.50, 90, 50, 42.5),
+  // new Weapon('Ancient Cavitation Collapser', Tech.AncientCavitationCollapser, Tier.I, Size.Medium, 28.75, 75.00, 0.50, 1.50, 1.00, 0.00, 0.50, 90, 30, 50),
+  // new Weapon('Ancient Cavitation Collapser', Tech.AncientCavitationCollapser, Tier.I, Size.Large, 69.00, 186.00, 0.50, 1.50, 1.00, 0.00, 0.50, 90, 5, 57),
+  new Weapon('Ancient Macro Batteries', Tech.AncientMacroBatteries, Tier.I, Size.Small, 12.00, 31.00, 1.50, 0.50, 1.00, 0.00, 0.00, 50, 50, 29),
+  new Weapon('Ancient Macro Batteries', Tech.AncientMacroBatteries, Tier.I, Size.Medium, 26.50, 78.00, 1.50, 0.50, 1.00, 0.00, 0.00, 50, 30, 36),
+  new Weapon('Ancient Macro Batteries', Tech.AncientMacroBatteries, Tier.I, Size.Large, 62.00, 186.00, 1.50, 0.50, 1.00, 0.00, 0.00, 50, 5, 42.5),
+  new Weapon('Ancient Nano-Missile Cloud Launcher', Tech.AncientNanoMissileCloudLauncher, Tier.I, Size.Small, 3.00, 5.00, 1.00, 1.00, 1.25, 1.00, 1.00, 100, 25, 8.5),
+  new Weapon('Ancient Saturator Artillery', Tech.AncientSaturatorArtillery, Tier.I, Size.ExtraLarge, 920.00, 2600.00, 2.50, 0.25, 1.25, 0.00, 0.00, 75, 0, 114),
 ];
 
 export function groupByTech(weapons: Weapon[]): Map<Tech, Weapon[]> {
