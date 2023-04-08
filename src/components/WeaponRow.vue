@@ -5,7 +5,7 @@
     <td>{{ weapon.cooldownTicks / 10 }}d</td>
     <td>{{ weapon.tracking }}%</td>
     <td>{{ timeToKillWithBonusesDays }}<sup class="text-success">{{ timeToKillWithBonusesDiffDays }}</sup></td>
-    <td>{{ sizeAdjustedTimeToKillDays }}d</td>
+    <td>{{ sizeAdjustedTimeToKillDays }}</td>
   </tr>
 </template>
 
