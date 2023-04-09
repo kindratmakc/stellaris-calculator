@@ -1,4 +1,4 @@
-import type {Target} from "@/domain/target";
+import {Target} from "@/domain/target";
 
 export const TICKS_PER_DAY = 10;
 
@@ -27,6 +27,13 @@ export class Weapon {
 
   public getAverageDamagePerDay(): number {
     return this.getAverageDamagePerHit() / (this.cooldownTicks / TICKS_PER_DAY);
+  }
+
+  public getTimeToDisengage(target: Target, trackingBonus: number, accuracyBonus: number): number {
+    const halfHullTarget = new Target(target.hull / 2, target.armor, target.shields, target.evasion);
+    const damageReport = this.getDamageReport(halfHullTarget, trackingBonus, accuracyBonus);
+
+    return damageReport.timeToKillTicks;
   }
 
   public getDamageReport(target: Target, trackingBonus = 0, accuracyBonus = 0): DamageReport {

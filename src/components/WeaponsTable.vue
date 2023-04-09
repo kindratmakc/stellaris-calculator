@@ -19,6 +19,12 @@
           Size Adjusted TTK<i class="fa-regular fa-circle-question fa-sm"></i>
         </span>
       </th>
+      <th class="col-1 text-center">
+        <span data-bs-toggle="tooltip" data-bs-placement="bottom"
+              data-bs-title="Time required to reduce target HP to 50%">
+          Time to disengage<i class="fa-regular fa-circle-question fa-sm"></i>
+        </span>
+      </th>
     </tr>
     </thead>
     <WeaponTechGroup

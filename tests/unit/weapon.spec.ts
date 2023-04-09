@@ -179,5 +179,19 @@ describe('Weapon', () => {
     //   expect(ttk.timeToKillTicks).toBe(30);
     // });
   });
+
+  test('time to disengage', () => {
+    const target = new Target(10, 10, 10, 50);
+    const weapon = testWeapon()
+      .withMinDamage(5)
+      .withMaxDamage(5)
+      .withCooldown(10)
+      .withAccuracy(90)
+      .build();
+
+    const timeToDisengage = weapon.getTimeToDisengage(target, 50, 10);
+
+    expect(timeToDisengage).toBe(40);
+  });
 });
 

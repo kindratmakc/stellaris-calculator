@@ -6,6 +6,7 @@
     <td>{{ weapon.tracking }}%</td>
     <td>{{ timeToKillWithBonusesDays }}<sup class="text-success">{{ timeToKillWithBonusesDiffDays }}</sup></td>
     <td>{{ sizeAdjustedTimeToKillDays }}</td>
+    <td>{{ timeToDisengageDays }}</td>
   </tr>
 </template>
 
@@ -30,6 +31,21 @@ export default {
     timeToKill() {
       return this.weapon.getDamageReport(this.store.target).timeToKillTicks;
     },
+    timeToKillWithBonuses() {
+      return this.weapon.getDamageReport(this.store.target, this.store.attacker.trackingBonus, this.store.attacker.accuracyBonus).timeToKillTicks;
+    },
+    timeToKillWithBonusesDiff() {
+      const ttkWithBonuses = this.timeToKillWithBonuses;
+
+      if (ttkWithBonuses === Infinity) {
+        return Infinity;
+      }
+
+      return ttkWithBonuses - this.timeToKill;
+    },
+    timeToDisengage() {
+      return this.weapon.getTimeToDisengage(this.store.target, this.store.attacker.trackingBonus, this.store.attacker.accuracyBonus);
+    },
     timeToKillWithBonusesDays() {
       let ttk = this.timeToKillWithBonuses;
 
@@ -47,6 +63,18 @@ export default {
       }
 
       return `${Math.floor(ttk * this.weaponSizeMultiplier) / TICKS_PER_DAY}d`;
+    },
+    timeToDisengageDays() {
+      let ttk = this.timeToDisengage;
+
+      if (ttk === Infinity) {
+        return '∞';
+      }
+
+      return `${Math.floor(ttk) / TICKS_PER_DAY}d`;
+    },
+    targetHull() {
+      return this.store.target.hull;
     },
     weaponSizeMultiplier() {
       switch (this.weapon.size) {
@@ -70,18 +98,6 @@ export default {
       }
 
       return `${Math.floor(ttk) / TICKS_PER_DAY}d`;
-    },
-    timeToKillWithBonusesDiff() {
-      const ttkWithBonuses = this.timeToKillWithBonuses;
-
-      if (ttkWithBonuses === Infinity) {
-        return Infinity;
-      }
-
-      return ttkWithBonuses - this.timeToKill;
-    },
-    timeToKillWithBonuses() {
-      return this.weapon.getDamageReport(this.store.target, this.store.attacker.trackingBonus, this.store.attacker.accuracyBonus).timeToKillTicks;
     },
     size() {
       return this.weapon.size.toString();
