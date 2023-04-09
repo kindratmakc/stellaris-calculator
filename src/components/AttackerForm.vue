@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="display-6">Attacker</h2>
+    <h3>Attacker</h3>
     <div>
       <div class="form-floating shadow-sm mb-3">
         <input id="accuracy-bonus-input" type="number" class="form-control"

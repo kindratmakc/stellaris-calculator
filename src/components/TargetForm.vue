@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="display-6">Target</h2>
+    <h3>Target</h3>
     <div>
       <div class="form-floating shadow-sm mb-3">
         <input id="hull-input" type="number" class="form-control" v-model.number="store.target.hull"
