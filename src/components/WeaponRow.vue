@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr class="text-center">
     <td>{{ size }}</td>
     <td>{{ weapon.getAverageDamagePerHit() }}</td>
     <td>{{ weapon.cooldownTicks / 10 }}d</td>

@@ -26,9 +26,15 @@
 import WeaponsTable from '@/components/WeaponsTable.vue';
 import TargetForm from "@/components/TargetForm.vue";
 import AttackerForm from "@/components/AttackerForm.vue";
+import {Tooltip} from "bootstrap";
 
 export default {
   name: 'App',
+  mounted() {
+    new Tooltip(document.body, {
+      selector: "[data-bs-toggle='tooltip']",
+    })
+  },
   components: {
     AttackerForm,
     TargetForm,

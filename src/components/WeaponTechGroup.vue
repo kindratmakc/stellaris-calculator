@@ -1,15 +1,19 @@
 <template>
   <tbody>
   <tr class="table-light">
-    <th>
-      {{ tech }}
+    <th colspan="100%">
+      <span data-bs-toggle="tooltip" data-bs-placement="right"
+      data-bs-custom-class="custom-tooltip"
+      data-bs-html="true"
+      :data-bs-title="`Accuracy: ${weapon.accuracy}%<br>
+                       Hull DMG: ${weapon.hullDamage * 100}%<br>
+                       Armor DMG: ${weapon.armorDamage * 100}%<br>
+                       Shield DMG: ${weapon.shieldDamage * 100}%<br>
+                       Armor Pen: ${weapon.armorPenetration * 100}%<br>
+                       Shield Pen: ${weapon.shieldPenetration * 100}%`">
+        {{ tech }} <i class="fa-regular fa-circle-question fa-sm"></i>
+      </span>
     </th>
-    <td colspan="100%">Accuracy: {{ weapon.accuracy }}%,
-    Hull DMG: {{ weapon.hullDamage * 100 }}%,
-    Armor DMG: {{ weapon.armorDamage * 100 }}%,
-    Shield DMG: {{ weapon.shieldDamage * 100 }}%,
-    Armor Pen: {{ weapon.armorPenetration * 100}}%,
-    Shield Pen: {{ weapon.shieldPenetration * 100 }}%</td>
   </tr>
   </tbody>
   <WeaponTierGroup
