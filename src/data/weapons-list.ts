@@ -1,4 +1,4 @@
-import {Size, Tech, Tier, Weapon} from "@/domain/weapon";
+import {Size, Tech, Tier, Weapon} from "$lib/weapon";
 
 export const weapons = [
   // Lasers
