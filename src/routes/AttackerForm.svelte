@@ -2,7 +2,7 @@
   import { attacker } from "./stores";
 </script>
 
-<div>
+<div class="px-1">
   <h3>Attacker</h3>
   <div>
     <div class="form-floating shadow-sm mb-3">
