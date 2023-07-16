@@ -68,6 +68,11 @@ export class TestWeaponBuilder {
 		return this;
 	}
 
+	withSize(size: Size): TestWeaponBuilder {
+		this.size = size;
+		return this;
+	}
+
 	build(): Weapon {
 		return new Weapon(
 			this.name,

@@ -4,7 +4,7 @@
 	import { groupByTier } from '../data/weapons-list';
 
 	export let tech: Tech;
-	export let weapons: Weapon[];
+	export let weapons: Weapon[] = [];
 
 	let groupedByTier = groupByTier(weapons);
 </script>
@@ -24,7 +24,7 @@
                          Armor Pen: {weapons[0].armorPenetration * 100}%<br>
                          Shield Pen: {weapons[0].shieldPenetration * 100}%"
 			>
-				{tech} <i class="fa-regular fa-circle-question fa-sm" />
+				{tech} <i class="fa-regular fa-circle-question fa-sm"></i>
 			</span>
 		</th>
 	</tr>

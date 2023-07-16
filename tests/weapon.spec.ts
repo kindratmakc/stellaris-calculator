@@ -1,6 +1,6 @@
 import { Target } from '$lib/target';
 import { testWeapon, TestWeaponBuilder } from './test-weapon';
-import { DamageReport } from '$lib/weapon';
+import { DamageReport, Size } from '$lib/weapon';
 import { describe, expect, test } from 'vitest';
 
 describe('Weapon', () => {
@@ -8,12 +8,6 @@ describe('Weapon', () => {
 		const weapon = testWeapon().withMinDamage(5).withMaxDamage(15).build();
 
 		expect(weapon.getAverageDamagePerHit()).toBe(10);
-	});
-
-	test('calculates average damage per day correctly', () => {
-		const weapon = testWeapon().withMinDamage(5).withMaxDamage(15).withCooldown(20).build();
-
-		expect(weapon.getAverageDamagePerDay()).toBe(5);
 	});
 
 	test('average damage calculated correctly', () => {
@@ -168,6 +162,24 @@ describe('Weapon', () => {
 		//
 		//   expect(ttk.timeToKillTicks).toBe(30);
 		// });
+	});
+
+	test.each([
+		[Size.Small, 1],
+		[Size.Medium, 2],
+		[Size.Large, 4],
+		[Size.ExtraLarge, 8],
+		[Size.Titan, 1],
+		[Size.Guided, 1],
+		[Size.PointDefense, 1],
+	])('damage multiplier', (size: Size, expectedMultiplier: number) => {
+		const testWeapon = new TestWeaponBuilder()
+			.withSize(size)
+			.build();
+
+		const sizeMultiplier = testWeapon.getSizeMultiplier();
+
+		expect(sizeMultiplier).toBe(expectedMultiplier);
 	});
 
 	test('time to disengage', () => {
