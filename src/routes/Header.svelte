@@ -5,7 +5,7 @@
 			<span class="navbar-text">
 				<a
 					class="nav-link"
-					href="https://github.com/kindratmakc/stellaris-advanced-calculator"
+					href="https://github.com/kindratmakc/stellaris-combat-calculator"
 					target="_blank"
 				>
 					GitHub <i class="fa-brands fa-github fa-2xl" style="color: #ebebeb;" />
