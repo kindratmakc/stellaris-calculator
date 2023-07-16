@@ -6,7 +6,7 @@ export default defineConfig({
 	test: {
 		include: ['tests/**/*.{test,spec}.{js,ts}']
 	},
-	base: process.env.NODE_ENV === 'production'
-		? '/stellaris-advanced-calculator/'
-		: '/',
+	root: process.env.NODE_ENV === 'production'
+		? './stellaris-advanced-calculator/'
+		: '',
 });
